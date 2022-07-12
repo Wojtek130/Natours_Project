@@ -6,3 +6,33 @@ Medium green: #55c57a
 Dark green: #28b485
 
 */
+
+/* universal selctor - applied to every element on the webpage */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* font configuration */
+    font-family: "Lato", sans-serif;
+    font-weight:  400;
+    font-size: 16px;
+    line-height: 1.7;
+    color : #777;
+    padding: 30px;
+}
+
+.header {
+    height: 95vh; /*95% of view port*/
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(126, 213, 111, 0.8),
+        rgba(40, 180, 131, 0.8)), 
+    url(../img/hero-small.jpg);
+    background-size: cover; /*fit the image inside the box, do not duplicate the image*/
+    background-position: top; /*top of the image stays the same while changing the image size, other options: down, center*/
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*clippy polygons*/
+    
+}
