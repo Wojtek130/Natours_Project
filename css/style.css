@@ -53,12 +53,14 @@ body {
   top: 50%; /*in the relation of the parent element*/
   left: 50%;
   transform: translate(-50%, -40%); /*in the relation of the element itself*/
+  text-align: center;
 }
 
 .heading-primary {
   color: rgb(255, 255, 255);
   text-transform: uppercase;
   backface-visibility: hidden; /*fix "shacking"*/
+  margin-bottom: 60px;
 }
 
 .heading-primary-main {
@@ -116,4 +118,31 @@ body {
     opacity: 1;
     transform: translate(0);
   }
+}
+
+.btn:link,
+.btn:visited {
+  /*visited state the same as link state*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 100px;
+  transition: all .2s; /*applied to all states of the button*/
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgb(0, 0, 0, 0.2);
+}
+
+.btn:active { /*on click*/
+  transform: translateY(-1px); /*the reference point is the link state*/
+  box-shadow: 0 5px 10px rgb(0, 0, 0, 0.2);
+
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
 }
