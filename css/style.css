@@ -120,6 +120,21 @@ body {
   }
 }
 
+
+@keyframes moveInBottom{
+  0% {
+    /*beginning*/
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    /*end*/
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
 .btn:link,
 .btn:visited {
   /*visited state the same as link state*/
@@ -128,7 +143,8 @@ body {
   padding: 15px 40px;
   display: inline-block;
   border-radius: 100px;
-  transition: all .2s; /*applied to all states of the button*/
+  transition: all 0.2s; /*applied to all states of the button*/
+  position: relative;
 }
 
 .btn:hover {
@@ -136,13 +152,40 @@ body {
   box-shadow: 0 10px 20px rgb(0, 0, 0, 0.2);
 }
 
-.btn:active { /*on click*/
+.btn:active {
+  /*on click*/
   transform: translateY(-1px); /*the reference point is the link state*/
   box-shadow: 0 5px 10px rgb(0, 0, 0, 0.2);
-
 }
 
 .btn-white {
   background-color: #fff;
   color: #777;
+}
+
+.btn::after {
+  content: ""; /*must-have*/
+  display: inline-block; /*must-have*/
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+  position: absolute; /*the reference point is the first parent element with position set to relative*/
+  top: 0;
+  left: 0;
+  z-index: -1; /*making the behind efect*/
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6); /*the reference point is the first parent element with transform*/
+  opacity: 0;
+}
+
+.btn-animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; /*set the style of an element before to animation to the style of 0% of the animation*/
 }
