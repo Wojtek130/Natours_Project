@@ -1,0 +1,199 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+/* universal selctor - applied to every element on the webpage */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /*enable inheritance of the box-sizing property which by default cannot be inherited */
+}
+
+html {
+  font-size: 62.5%; /* root font size, if root-font-size == 1rem, then 1rem = 1rem*/
+}
+
+body {
+  /* font configuration */
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+}
+
+.header {
+  height: 95vh; /*95% of view port*/
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(126, 213, 111, 0.8),
+      rgba(40, 180, 131, 0.8)
+    ),
+    url(../img/hero-small.jpg);
+  background-size: cover; /*fit the image inside the box, do not duplicate the image*/
+  background-position: top; /*top of the image stays the same while changing the image size, other options: down, center*/
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*clippy polygons*/
+  position: relative; /*becomes a reference point to elements inside of it*/
+}
+
+.header__logo-box {
+  position: absolute;
+  top: 4rem;
+  left: 4rem;
+}
+
+.header__logo {
+  height: 3.5rem;
+}
+
+.header__text-box {
+  position: absolute;
+  top: 50%; /*in the relation of the parent element*/
+  left: 50%;
+  transform: translate(-50%, -40%); /*in the relation of the element itself*/
+  text-align: center;
+}
+
+.heading-primary {
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  backface-visibility: hidden; /*fix "shacking"*/
+  margin-bottom: 6rem;
+}
+
+.heading-primary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  letter-spacing: 3.5rem;
+
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  /* animation-delay: 0.5s; /*start the animation aftes n sec*/
+  /*animation-iteration-count: 3; reapeat n times */
+  animation-timing-function: ease-in-out; /* slower int he beginning, faster in the end*/
+}
+
+.heading-primary--sub {
+  display: block;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1.74rem;
+  animation: moveInRight 1s ease-in-out; /*shorter syntax than above*/
+}
+
+@keyframes moveInLeft {
+  0% {
+    /*beginning*/
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+
+  80% {
+    transform: translateX(2rem);
+  }
+
+  100% {
+    /*end*/
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    /*beginning*/
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+
+  80% {
+    transform: translateX(-2rem);
+  }
+
+  100% {
+    /*end*/
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+
+@keyframes moveInBottom{
+  0% {
+    /*beginning*/
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+
+  100% {
+    /*end*/
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  /*visited state the same as link state*/
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s; /*applied to all states of the button*/
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.btn:hover {
+  transform: translateY(-.3rem);
+  box-shadow: 0 1rem 2rem rgb(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  /*on click*/
+  transform: translateY(-.1rem); /*the reference point is the link state*/
+  box-shadow: 0 .5rem 1rem rgb(0, 0, 0, 0.2);
+}
+
+.btn--white {
+  background-color: #fff;
+  color: #777;
+}
+
+.btn::after {
+  content: ""; /*must-have*/
+  display: inline-block; /*must-have*/
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute; /*the reference point is the first parent element with position set to relative*/
+  top: 0;
+  left: 0;
+  z-index: -1; /*making the behind efect*/
+  transition: all .4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6); /*the reference point is the first parent element with transform*/
+  opacity: 0;
+}
+
+.btn--animated {
+  animation: moveInBottom .5s ease-out .75s;
+  animation-fill-mode: backwards; /*set the style of an element before to animation to the style of 0% of the animation*/
+}

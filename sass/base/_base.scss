@@ -1,0 +1,15 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; /*enable inheritance of the box-sizing property which by default cannot be inherited */
+}
+
+html {
+  font-size: 62.5%; /* root font size, if root-font-size == 1rem, then 1rem = 1rem*/
+}
+
+body {
+  box-sizing: border-box;
+}
