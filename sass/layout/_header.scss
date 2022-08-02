@@ -5,7 +5,7 @@
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)
       ),
-      url(../img/hero-small.jpg);
+      url(../img/hero.jpg);
     background-size: cover; /*fit the image inside the box, do not duplicate the image*/
     background-position: top; /*top of the image stays the same while changing the image size, other options: down, center*/
     clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*clippy polygons*/
