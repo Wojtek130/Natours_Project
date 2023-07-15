@@ -2,3 +2,4 @@ npm init
 npm install packegeName --save      <- dependency
 npm install packegeName --save-dev  <- dev dependency
 npm install                         <- install all required packegeName listed in package.json
+npm run compile:sass

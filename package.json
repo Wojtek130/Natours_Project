@@ -1,7 +1,7 @@
 {
-  "name": "natours",
+  "name": "natours_project",
   "version": "1.0.0",
-  "description": "",
+  "description": "I highly encourage you to download the source code and to open the website in your browser because there are plenty of modern visual effects that are not visible in the screenshot. Please take a look also on the code itself, it is structured according to 7-1 Sass architecture and written according to BEM naming convention.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,13 +11,13 @@
     "type": "git",
     "url": "git+https://github.com/Wojtek130/Natours_Project.git"
   },
-  "author": "Wojtek130",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Wojtek130/Natours_Project/issues"
   },
   "homepage": "https://github.com/Wojtek130/Natours_Project#readme",
-  "devDependencies": {
-    "node-sass": "^7.0.1"
+  "dependencies": {
+    "node-sass": "^7.0.3"
   }
 }
