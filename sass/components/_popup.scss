@@ -11,13 +11,17 @@
     visibility: hidden;
     transition: all .3s;
 
+    @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+        backdrop-filter: blur(10px);
+        --webkit-backdrop-filter: blur(10px);
+        background-color: rgba($color: $color-black, $alpha: .3);
+    }
+
     &:target {
         //when anchor with given id is clicked
         opacity: 1;
         visibility: visible;
     }
-
-
 
     &__content{
         @include absCenter;

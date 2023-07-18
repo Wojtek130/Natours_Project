@@ -1,37 +1,64 @@
 .header {
-    height: 95vh; /*95% of view port*/
+  height: 85vh; /*95% of view port*/
+
+  background-image: linear-gradient(
+    to right bottom,
+    rgba($color-primary-light, 0.8),
+    rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero-small.jpg);
+    background-size: cover; /*fit the image inside the box, do not duplicate the image*/
+    background-position: top; /*top of the image stays the same while changing the image size, other options: down, center*/
+    position: relative; /*becomes a reference point to elements inside of it*/
+    
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      height: 95vh; /*95% of view port*/
+      -webkit-clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 75vh,
+      0 100%
+    ); /*clippy polygons*/
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*clippy polygons*/
+  }
+
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), 
+  (min-resolution-device-pixel-radio: 2) and (min-width: 37.5em), 
+  (min-width: 125em) {
     background-image: linear-gradient(
         to right bottom,
         rgba($color-primary-light, 0.8),
         rgba($color-primary-dark, 0.8)
       ),
       url(../img/hero.jpg);
-    background-size: cover; /*fit the image inside the box, do not duplicate the image*/
-    background-position: top; /*top of the image stays the same while changing the image size, other options: down, center*/
-    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*clippy polygons*/
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /*clippy polygons*/
-    position: relative; /*becomes a reference point to elements inside of it*/
-
-    @include respond(phone) {
-      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); /*clippy polygons*/
-      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); /*clippy polygons*/
-    }
-  
-    &__logo-box {
-      position: absolute;
-      top: 4rem;
-      left: 4rem;
-    }
-  
-    &__logo {
-      height: 3.5rem;
-    }
-    
-    &__text-box {
-      position: absolute;
-      top: 50%; /*in the relation of the parent element*/
-      left: 50%;
-      transform: translate(-50%, -40%); /*in the relation of the element itself*/
-      text-align: center;
-    }
   }
+
+
+  @include respond(phone) {
+    -webkit-clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 85vh,
+      0 100%
+    ); /*clippy polygons*/
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 85%); /*clippy polygons*/
+  }
+
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+
+  &__logo {
+    height: 3.5rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 50%; /*in the relation of the parent element*/
+    left: 50%;
+    transform: translate(-50%, -40%); /*in the relation of the element itself*/
+    text-align: center;
+  }
+}

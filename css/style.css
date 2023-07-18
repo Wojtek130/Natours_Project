@@ -613,6 +613,11 @@ body {
   opacity: 0;
   visibility: hidden;
   transition: all .3s; }
+  @supports (backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px)) {
+    .popup {
+      backdrop-filter: blur(10px);
+      --webkit-backdrop-filter: blur(10px);
+      background-color: rgba(0, 0, 0, 0.3); } }
   .popup:target {
     opacity: 1;
     visibility: visible; }
@@ -701,14 +706,21 @@ body {
     width: 15rem;
     height: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    /*this property requires height, width and float to be set, it determines how the shape of the div*/
     -webkit-clip-path: circle(50% at 50% 50%);
     clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
     /*better to use translate than setting a margin on floated elements*/
-    position: relative; }
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%; }
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      .story__shape {
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        /*this property requires height, width and float to be set, it determines how the shape of the div*/
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        border-radius: none; } }
     @media (max-width: 37.5em) {
       .story__shape {
         transform: translateX(-3rem) skewX(0); } }
@@ -785,24 +797,31 @@ body {
     width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 .header {
-  height: 95vh;
+  height: 85vh;
   /*95% of view port*/
-  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   background-size: cover;
   /*fit the image inside the box, do not duplicate the image*/
   background-position: top;
   /*top of the image stays the same while changing the image size, other options: down, center*/
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /*clippy polygons*/
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /*clippy polygons*/
   position: relative;
   /*becomes a reference point to elements inside of it*/ }
+  @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+    .header {
+      height: 95vh;
+      /*95% of view port*/
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      /*clippy polygons*/
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      /*clippy polygons*/ } }
+  @media (min-resolution: 192dpi) and (min-width: 37.5em), (min-resolution-device-pixel-radio: 2) and (min-width: 37.5em), (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(85, 197, 122, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
   @media (max-width: 37.5em) {
     .header {
       -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
       /*clippy polygons*/
-      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75%, 0 85%);
       /*clippy polygons*/ } }
   .header__logo-box {
     position: absolute;
